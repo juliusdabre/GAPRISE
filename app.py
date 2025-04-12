@@ -6,7 +6,10 @@ import plotly.graph_objects as go
 
 df = pd.read_excel("GGI Jan 2025.xlsx")
 st.set_page_config(page_title="NextRise - Property Investment Dashboard", layout="wide")
-st.title("NextRise ")
+
+# Logo Display
+st.image("logo.png", width=200)
+st.title("🏡 NextRise: Property Investment Dashboard")
 
 st.sidebar.header("🔍 Filter Areas")
 area_options = df['Area'].unique()
@@ -41,8 +44,7 @@ st.subheader("📊 Filtered Suburb Data")
 st.dataframe(filtered_df, use_container_width=True)
 
 st.subheader("📉 Growth Gap by Area")
-fig = px.bar(filtered_df, x='Area', y='Growth gap ($)', color='Av Annual Growth (10Y)',
-             labels={'Growth gap ($)': 'Growth Gap ($)'})
+fig = px.bar(filtered_df, x='Area', y='Growth gap ($)', color='Av Annual Growth (10Y)')
 st.plotly_chart(fig, use_container_width=True)
 
 st.subheader("🕸️ Radar Chart of Key Metrics")
